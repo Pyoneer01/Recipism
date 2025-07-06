@@ -1,0 +1,47 @@
+<%- include("partials/header.ejs", {cuisines: cuisineList}) %>
+<div id="response-area" class="mx-auto my-auto">
+<% if( locals.content) {%>
+      <h2 id="recipe-title"><%= content.title %></h2>
+      <img src="<%= content.image %>" alt="<%= content.title %> image" />
+      <div id="ingredients-area" class="mt-4">
+        <h3 class="title">Ingredients: </h3>
+        <ul>
+          <% ingredients.forEach(ingredient => { %>
+          <li>
+            <strong><%= ingredient.name %></strong> – 
+            <%= ingredient.amt %>
+          </li>
+          <% }); %>
+        </ul>
+      </div>
+      <br>
+      <div id="instructions-area">
+        <h3 class="title">Recipe: </h3>
+          <ol>
+          <% recipeInstructions.forEach(item => { %>
+            <% if(item.name==""){ %>
+              <% item.steps.forEach(item => { %>
+              <li><%= item.step %></li>
+            <% })} else {%>
+              <li>
+                <%= item.name %>:
+                <ul>
+                  <% item.steps.forEach(item => { %>
+                    <li><%= item.step %></li>
+                  <% })%>
+                </ul>
+              </li>
+            <% } %>
+            <ol>
+            
+            </ol>
+          <% }); %>
+          </li>
+          </ol>
+      </div>
+    
+  <% } else { %>
+      <h2>Recipe generated here</h2>
+  <% } %>
+  </div>
+<%- include("partials/footer.ejs") %>

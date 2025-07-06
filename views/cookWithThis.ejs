@@ -1,0 +1,10 @@
+<%- include("partials/header.ejs", {cuisines: cuisineList}) %>
+    <div id="response-area" class="container mx-auto my-auto">
+    <form role="search" action="/cookWithThis" method="POST">
+        <div class="form-floating mb-2">
+            <textarea class="form-control" placeholder="Add Ingredients (comma separated names)" id="floatingTextarea" name="ingredients" style="height: 150px;"></textarea>
+        </div>
+        <button type="submit" class="btn btn-light">Submit</button>
+    </form>
+    </div>
+<%- include("partials/footer.ejs") %>

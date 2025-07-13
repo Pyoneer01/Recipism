@@ -42,10 +42,12 @@
       font-size: 1.25rem;
       padding: 20px 20px 10px;
       text-align: center;
-      min-width:fit-content;
+      min-width: fit-content;
       max-width:800px;
       border-radius: 15px;
       height:fit-content!important;
+      word-wrap: break-word;   /* Legacy, but still supported */
+      overflow-wrap: break-word;
     }
 
     .title{
@@ -130,7 +132,7 @@
     <li class="nav-item me-1">
       <form class="d-flex" role="search" action="/cookWithThis" method="GET">
         <button class="nav-link btn btn-link mb-2 mt-0 mb-lg-0 fs-4 ms-0" style="text-align: left;" type="submit">
-          CookWithThis 
+          Cook with this 
         </button>
       </form>
     </li>

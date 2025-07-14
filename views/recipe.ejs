@@ -5,6 +5,7 @@
       <img src="<%= content.image %>" alt="<%= content.title %> image" />
       <div id="ingredients-area" class="mt-4">
         <h3 class="title">Ingredients: </h3>
+        <% if(ingredients.length != 0){ %>
         <ul>
           <% ingredients.forEach(ingredient => { %>
           <li>
@@ -13,10 +14,14 @@
           </li>
           <% }); %>
         </ul>
+        <% } else{ %>
+          <span>Ingredients missing !</span>
+          <% } %>
       </div>
       <br>
       <div id="instructions-area">
         <h3 class="title">Recipe: </h3>
+          <% if(recipeInstructions.length != 0) { %>
           <ol>
           <% recipeInstructions.forEach(item => { %>
             <% if(item.name==""){ %>
@@ -32,12 +37,11 @@
                 </ul>
               </li>
             <% } %>
-            <ol>
-            
-            </ol>
           <% }); %>
-          </li>
           </ol>
+          <% }else{ %>
+            <span>Recipe Instructions missing !</span>
+            <% } %>
       </div>
     
   <% } else { %>

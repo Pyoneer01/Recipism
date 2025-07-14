@@ -126,16 +126,16 @@ app.post("/search", async (req, res)=>{
         const extraParam = checkVegetarian(req.cookies.vegetarian);
         const response = await axios.get(`${API_URL}recipes/complexSearch?titleMatch=${food}&apiKey=${apiKey}&number=50`+extraParam);
         const results = response.data.results;
-        shuffle(results, 10);
         const recipes = results.slice(0, 10);
         if(recipes.length != 0){
            res.render("index.ejs", {content: recipes, cuisineList: cuisines}); 
         } else {
-            res.render("index.ejs", {cuisineList: cuisines, errorMessage: "Log in again"});
+            res.render("index.ejs", {cuisineList: cuisines});
         }
         
     }
     catch(error){
+        console.log(error)
         res.render("index.ejs", {cuisineList: cuisines})
         console.log(error.message);
     }
@@ -203,11 +203,11 @@ app.post("/cookWithThis", async (req, res) => {
         const ingredients = req.body["ingredients"].replace(/\s+/g, '');
         const ingredientsArray = ingredients.split(",");
         const ingredientsParsed = ingredientsArray.join(",+").toLowerCase();
-
         const response = await axios.get(`${API_URL}recipes/findByIngredients?ingredients=${ingredientsParsed}&apiKey=${apiKey}`);
         const results = response.data;
-        if(results.length != 0){
-           res.render("index.ejs", {content: results, cuisineList: cuisines}); 
+        const recipes = results.slice(0, 10);
+        if(recipes.length != 0){
+           res.render("index.ejs", {content: recipes, cuisineList: cuisines}); 
         } else {
             res.render("index.ejs", {cuisineList: cuisines});
         }

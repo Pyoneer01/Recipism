@@ -153,7 +153,7 @@ app.post("/getRecipe", async (req, res)=>{
         let ingredients = []
         ingredientsResult.forEach(ingredient => {
             const ingredientName = ingredient.name;
-            const amt = ingredient.amount.metric.value
+            const amt = Math.round(ingredient.amount.metric.value*10)/10;
             const unit = ingredient.amount.metric.unit;
             const ing = {name: ingredientName, amt: "" + amt + " " + unit };
             ingredients.push(ing);

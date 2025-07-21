@@ -2,7 +2,7 @@ import express from "express";
 import axios from "axios";
 import env from "dotenv";
 import bodyParser from "body-parser";
-import cookieParser from 'cookie-parser'; // ✅ Correct for ESM
+import cookieParser from 'cookie-parser'; 
 import session from "express-session";
 import passport from "passport";
 import { Strategy } from "passport-local";
@@ -220,7 +220,7 @@ app.post("/cookWithThis", async (req, res) => {
 
 passport.use(new Strategy(
   {
-    usernameField: "name",     // <== These must match your login form
+    usernameField: "name",   
     passwordField: "apiKey"
   },
   async (name, apiKey, done) => {

@@ -2,7 +2,7 @@
 import {expect} from "chai";
 import sinon from "sinon";
 import request from "supertest";
-import app, {checkVegetarian} from "../index.js"; // path to your main app file
+import app, {checkVegetarian} from "../index.js";
 import axios from "axios";
 
 
@@ -12,7 +12,7 @@ describe("Express App Route Tests", function () {
     it("should return 200 and render the login page", async function () {
       const res = await request(app).get("/login");
       expect(res.status).to.equal(200);
-      expect(res.text).to.include("form"); // or something from login.ejs
+      expect(res.text).to.include("form"); 
     });
   });
 
@@ -55,7 +55,7 @@ describe("Express App Route Tests", function () {
   describe("GET /random", function () {
     it("should redirect unauthenticated users to login", async function () {
       const res = await request(app).get("/random");
-      expect(res.status).to.be.oneOf([302, 200]); // if random route is public
+      expect(res.status).to.be.oneOf([302, 200]);
     });
   });
 
